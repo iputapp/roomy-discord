@@ -8,7 +8,7 @@ Roomy! - 教室アナウンス Discord Bot 🥂 for @iputapp
 
 | Environments                | Languages                  | Linters                                                                     | Frameworks   | Libraries                                                                      | Testing                             | CI/CD                 | PaaS                                                            |
 | :-------------------------- | :------------------------- | :-------------------------------------------------------------------------- | :----------- | :----------------------------------------------------------------------------- | :---------------------------------- | :-------------------- | :-------------------------------------------------------------- |
-| ![node-logo]<br>![pnpm-logo] | ![ts-logo] | ![biome-logo]<br>![lefthook-logo] | ![hono-logo] | ![react-logo]<br>![tailwind-logo]<br>![valibot-logo] | ![vitest-logo] | ![githubactions-logo] | ![cloudflareworkers-logo]<br>![cloudflare-logo] |
+| ![node-logo]<br>![pnpm-logo] | ![ts-logo] | ![biome-logo]<br>![lefthook-logo] | ![hono-logo] | ![valibot-logo] | ![vitest-logo] | ![githubactions-logo] | ![cloudflareworkers-logo]<br>![cloudflare-logo] |
 
 [node-logo]: https://img.shields.io/badge/-Node.js-5FA04E.svg?logo=nodedotjs&style=flat&logoColor=ffffff
 [pnpm-logo]: https://img.shields.io/badge/-pnpm-F69220.svg?logo=pnpm&style=flat&logoColor=ffffff
