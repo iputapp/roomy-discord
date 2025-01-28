@@ -113,7 +113,7 @@ pnpm register
 
 ```sh
 pnpm dev
-pnpm start # windows は start:exe
+pnpm start
 ```
 
 [ngrok](https://ngrok.com)を使用して`localhost:8787`をパブリックに公開する。
