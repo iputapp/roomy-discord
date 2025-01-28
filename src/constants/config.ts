@@ -19,7 +19,7 @@ export function parseEnv(env: Bindings) {
       clientEmail: env.GOOGLE_CLIENT_EMAIL || "",
       privateKey: env.GOOGLE_PRIVATE_KEY || "",
       spreadsheetId: env.SPREADSHEET_ID || "",
-      range: "A:D", // 取得する範囲
+      range: "A:E", // 取得する範囲
     },
     node: {
       env: env.NODE_ENV || "production",
