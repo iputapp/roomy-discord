@@ -141,11 +141,33 @@ pnpm start
 
 #### API v1
 
+- [Discord v1](#discord-v1)
+- [Google v1](#google-v1)
+- [Cron v1](#cron-v1)
+
+##### Discord v1
+
 ```
 POST /v1/discord/interaction
 ```
 
-Discord App `INTERACTIONS ENDPOINT URL`の設定に利用する。
+Discord App [`INTERACTIONS ENDPOINT URL`の設定](https://discord.com/developers/docs/quick-start/getting-started#adding-an-interaction-endpoint-url)に利用する。
+
+##### Google v1
+
+```
+GET /v1/google/sheets/room/today
+```
+
+Google Sheets から**今日の教室情報**を取得する。
+
+##### Cron v1
+
+```
+POST /v1/cron
+```
+
+定期アナウンスのCronに設定する。
 
 ### 実行スケジュールを変更する
 
