@@ -150,6 +150,6 @@ Discord App `INTERACTIONS ENDPOINT URL`の設定に利用する。
 
 [`wrangler.toml`](./wrangler.toml)の`crons`を変更する。
 
-> [TIP]
+> [!TIP]
 >
 > cronのタイムゾーンは`UTC`のため、`UTC+9時間`を設定する。
