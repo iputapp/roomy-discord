@@ -69,10 +69,7 @@ export namespace GoogleSheetsService {
     const today = new Date();
     const formattedToday = `${today.getMonth() + 1}/${today.getDate()}`; // "M/D"
     const todayRow = values.find((row) => {
-      const _className = row[0]; // A列に授業名
       const date = row[1]; // B列に日付
-      const _dayOfWeek = row[2]; // C列に曜日
-      const _room = row[3]; // D列に教室
       return date === formattedToday;
     });
 
@@ -80,10 +77,25 @@ export namespace GoogleSheetsService {
       return "本日の情報が見つかりませんでした";
     }
 
-    const room = todayRow[3]; // D列に教室
+    const className = todayRow[0] || "情報なし"; // A列に授業名
+    const date = todayRow[1] || "情報なし"; // B列に日付
+    const dayOfWeek = todayRow[2] || "情報なし"; // C列に曜日
+    const room = todayRow[3] || null; // D列に教室
+    const note = todayRow[4] || ""; // E列に備考
 
-    return !room
+    /**
+     * @example
+     * 本日の教室は999です
+     * ```
+     * <日付> 1/1(月)
+     * <授業> 自習室
+     * 備考
+     * ```
+     */
+    const message = !room
       ? "本日の教室は予約されていません"
-      : `本日の教室は\`${room}\`です`;
+      : `本日の教室は\`${room}\`です\n\`\`\`<日付> ${date}(${dayOfWeek})\n<授業> ${className}\n${note}\n\`\`\``;
+
+    return message;
   }
 }
