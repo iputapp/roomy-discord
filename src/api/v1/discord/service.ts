@@ -21,7 +21,12 @@ export namespace DiscordService {
     const { body, signature, timestamp, env } = props;
     const { discord, googleSheets } = parseEnv(env);
 
-    const isValid = verifyKey(body, signature, timestamp, discord.publicKey);
+    const isValid = await verifyKey(
+      body,
+      signature,
+      timestamp,
+      discord.publicKey,
+    );
     if (!isValid) {
       throw new APIError("Invalid discord signature", 401);
     }
