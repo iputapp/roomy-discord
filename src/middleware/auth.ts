@@ -1,16 +1,10 @@
-import crypto from "node:crypto";
 import type { Context, Next } from "hono";
 import { parseEnv } from "~/constants";
 import { APIError } from "~/handler";
 import type { Bindings } from "~/types";
+import { generateHMAC } from "~/utils/crypto";
 
 const DEFEAULT_TIMESTAMP_TOLERANCE = 5 * 60 * 1000; // 5分(ミリ秒)
-
-async function generateHMAC(payload: string, key: string): Promise<string> {
-  const hmac = crypto.createHmac("sha256", key);
-  hmac.update(payload);
-  return hmac.digest("hex");
-}
 
 export async function authMiddleware(
   c: Context<{ Bindings: Bindings }>,
