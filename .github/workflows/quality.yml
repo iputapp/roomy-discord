@@ -1,0 +1,39 @@
+name: Quality
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - "**/*.md"
+      - "docs/**"
+      - ".git*"
+      - ".vscode/**"
+      - ".env.example"
+      - ".npmrc"
+      - ".prototools"
+      - "LICENSE"
+      - "wrangler.toml"
+
+jobs:
+  biome:
+    name: Biome
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Quality check
+        run: pnpm biome check --error-on-warnings
