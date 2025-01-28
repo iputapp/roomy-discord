@@ -1,6 +1,6 @@
 name = "roomy-discord-iputapp"
 main = "src/index.ts"
-compatibility_date = "2025-01-27"
+compatibility_date = "2025-01-24"
 
 compatibility_flags = ["nodejs_compat"]
 
