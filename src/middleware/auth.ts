@@ -30,7 +30,7 @@ export async function authMiddleware(
     throw new APIError(
       'YOU HAVE TO SET ENVIROMENT VARIABLE "API_ENDPOINT_SECRET"',
       500,
-      "API_ENDPOINT_SECRET",
+      "ENVIRONMENT_VARIABLE_NOT_SET",
     );
   }
 
