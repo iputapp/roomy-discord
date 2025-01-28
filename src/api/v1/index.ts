@@ -2,11 +2,11 @@ import { Hono } from "hono";
 import type { Bindings } from "~/types";
 import { cronRoutes } from "./cron";
 import { discordRoutes } from "./discord";
-import { googleSheetsRoutes } from "./google-sheets";
+import { googleRoutes } from "./google";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
 
-v1.route("/v1", googleSheetsRoutes);
+v1.route("/v1", googleRoutes);
 v1.route("/v1", discordRoutes);
 v1.route("/v1", cronRoutes);
 

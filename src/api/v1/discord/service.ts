@@ -9,7 +9,7 @@ import { DISCORD_COMMANDS } from "~/constants";
 import { APIError } from "~/handler";
 import { InteractionResponseType, discordInteractionHandler } from "~/handler";
 import type { Bindings } from "~/types";
-import { GoogleSheetsService } from "../google-sheets/service";
+import { GoogleSheetsService } from "../google/sheets/service";
 
 export namespace DiscordService {
   export async function handleInteraction(props: {

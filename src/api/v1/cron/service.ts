@@ -1,7 +1,7 @@
 import { parseEnv } from "~/constants";
 import type { Bindings } from "~/types";
 import { sendDiscordMessage } from "~/utils/discord";
-import { GoogleSheetsService } from "../google-sheets/service";
+import { GoogleSheetsService } from "../google/sheets/service";
 
 export namespace CronService {
   export async function processCronJob(env: Bindings): Promise<void> {
