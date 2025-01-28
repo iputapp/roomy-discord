@@ -112,6 +112,7 @@ pnpm register
 #### 開発サーバをパブリックに公開
 
 ```sh
+pnpm dev
 pnpm start # windows は start:exe
 ```
 
