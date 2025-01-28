@@ -13,8 +13,8 @@
     "lint": "biome lint . --error-on-warnings",
     "format": "biome format . --error-on-warnings --write",
     "register": "tsx --env-file=.dev.vars ./register.ts",
-    "start": "wrangler dev && ngrok http 8787",
-    "start:exe": "wrangler dev && ./ngrok.exe http 8787"
+    "start": "ngrok http 8787",
+    "start:exe": "./ngrok.exe http 8787"
   },
   "dependencies": {
     "discord-interactions": "^4.1.0",
