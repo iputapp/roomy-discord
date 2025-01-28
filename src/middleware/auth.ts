@@ -19,6 +19,9 @@ export async function authMiddleware(
 ) {
   const { timestampTolerance = DEFEAULT_TIMESTAMP_TOLERANCE } = options || {};
 
+  /**
+   * 本番環境以外は認証をスキップ
+   */
   const { node } = parseEnv(c.env);
   if (node.env !== "production") return await next();
 
