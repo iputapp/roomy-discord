@@ -1,4 +1,4 @@
-name = "roomy-discord"
+name = "roomy-discord-iputapp"
 main = "src/index.ts"
 compatibility_date = "2025-01-27"
 
