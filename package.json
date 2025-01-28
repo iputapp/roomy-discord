@@ -14,8 +14,8 @@
     "lint": "biome lint . --error-on-warnings",
     "format": "biome format . --error-on-warnings --write",
     "check": "biome check . --error-on-warnings",
-    "register": "tsx --env-file=.dev.vars ./register.ts",
-    "gen:secret": "tsx --env-file=.dev.vars ./secret.ts"
+    "register": "tsx --env-file=.dev.vars ./scripts/register.ts",
+    "gen:secret": "tsx --env-file=.dev.vars ./scripts/secret.ts"
   },
   "dependencies": {
     "discord-interactions": "^4.1.0",
