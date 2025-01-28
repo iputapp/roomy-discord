@@ -88,7 +88,7 @@ export namespace DiscordService {
         type: InteractionResponseType.ChannelMessageWithSource,
         data: { content: "Unsupported interaction type" },
       },
-      { status: 400 },
+      { status: 404 },
     );
   }
 }
