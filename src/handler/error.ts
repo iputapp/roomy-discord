@@ -1,4 +1,4 @@
-import type { Context, TypedResponse } from "hono";
+import type { Context } from "hono";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
 import type { Bindings } from "~/types";
 import type { APIErrorResponse } from "./types";
@@ -17,7 +17,7 @@ export class APIError extends Error {
 export function apiErrorHandler(
   err: unknown,
   c: Context<{ Bindings: Bindings }>,
-): TypedResponse<APIErrorResponse> {
+) {
   if (err instanceof APIError) {
     return c.json(
       {
@@ -26,7 +26,7 @@ export function apiErrorHandler(
           message: err.message,
           code: err.code,
         },
-      },
+      } satisfies APIErrorResponse,
       err.status,
     );
   }
@@ -37,7 +37,7 @@ export function apiErrorHandler(
         message: "Internal Server Error",
         code: "INTERNAL_SERVER_ERROR",
       },
-    },
+    } satisfies APIErrorResponse,
     500,
   );
 }
