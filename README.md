@@ -85,6 +85,27 @@ pnpm i
 pnpm dev
 ```
 
+#### 開発サーバをパブリックに公開
+
+```sh
+pnpm dev
+pnpm start
+```
+
+[ngrok](https://ngrok.com)を使用して`localhost:8787`をパブリックに公開する。
+
+> [!IMPORTANT]
+>
+> [ngrok - Setup & Installation](https://dashboard.ngrok.com/get-started/setup)から環境に合わせて`ngrok`を導入する。
+>
+> Windowsは`Download for Windows (64-Bit)`でダウンロードおよび解凍したexeファイルを、レポジトリのルートディレクトリに置く。
+
+> [!TIP]
+>
+> テスト用 Discord App `INTERACTIONS ENDPOINT URL`の設定に利用する。
+>
+> ドキュメント: [Discord Developers - Set up a public endpoint](https://discord.com/developers/docs/quick-start/getting-started#step-3-handling-interactivity)
+
 #### リンターのチェック
 
 ```sh
@@ -109,26 +130,19 @@ pnpm deploy:mini
 pnpm register
 ```
 
-#### 開発サーバをパブリックに公開
+> [!TIP]
+>
+> スラッシュコマンドの一覧は[`src/constants/config.ts`](./src/constants/config.ts)の`DISCORD_COMMANDS`を参照する。
+
+#### APIエンドポイント認証のキーを生成
 
 ```sh
-pnpm dev
-pnpm start
+pnpm gen:secret
 ```
-
-[ngrok](https://ngrok.com)を使用して`localhost:8787`をパブリックに公開する。
 
 > [!IMPORTANT]
 >
-> [ngrok - Setup & Installation](https://dashboard.ngrok.com/get-started/setup)から環境に合わせて`ngrok`を導入する。
->
-> Windowsは`Download for Windows (64-Bit)`でダウンロードおよび解凍したexeファイルを、レポジトリのルートディレクトリに置く。
-
-> [!TIP]
->
-> Discord App `INTERACTIONS ENDPOINT URL`の設定に利用する。
->
-> ドキュメント: [Discord Developers - Set up a public endpoint](https://discord.com/developers/docs/quick-start/getting-started#step-3-handling-interactivity)
+> 生成したキーは環境変数 [`API_ENDPOINT_SECRET`](#環境変数) に設定する。
 
 ## Documents
 
@@ -168,6 +182,39 @@ POST /v1/cron
 ```
 
 定期アナウンスのCronに設定する。
+
+#### 認証について
+
+センシティブなAPIエンドポイントは認証を設けている。
+
+認証付きのパスは以下:
+
+- [Google v1](#google-v1)
+- [Cron v1](#cron-v1)
+
+> [!NOTE]
+>
+> クライアントでのリクエスト例:
+>
+> ```ts
+> async function makeAuthenticatedRequest(path: string) {
+>   const timestamp = Date.now().toString();
+>   const apiKey = 'your_secure_random_string'; // API_ENDPOINT_SECRETと同じ値
+>
+>   // 署名の生成
+>   const payload = timestamp + path;
+>   const signature = await generateHMAC(payload, apiKey);
+>
+>   const response = await fetch(`https://your-api.com${path}`, {
+>     headers: {
+>       "X-Request-Timestamp": timestamp,
+>       "X-Signature": signature
+>     }
+>   });
+>
+>   return response;
+> };
+> ```
 
 ### 実行スケジュールを変更する
 
