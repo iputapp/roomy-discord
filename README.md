@@ -2,7 +2,7 @@
 
 # Roomy
 
-Roomy! - 教室アナウンス Discord Bot 🥂 for @iputapp
+教室アナウンス API w/ Discord 🥂 for @iputapp
 
 ## Tech Stack
 
