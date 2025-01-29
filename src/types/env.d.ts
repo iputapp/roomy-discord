@@ -8,4 +8,5 @@ export interface Bindings {
   GOOGLE_PRIVATE_KEY: string;
   SPREADSHEET_ID: string;
   API_ENDPOINT_SECRET: string;
+  API_ENDPOINT_URL: string;
 }
