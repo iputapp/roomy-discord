@@ -60,7 +60,8 @@ DISCORD_CHANNEL_ID=your_channel_id
 GOOGLE_CLIENT_EMAIL=your_google_client_email
 GOOGLE_PRIVATE_KEY=your_google_private_key
 SPREADSHEET_ID=your_spreadsheet_id
-API_ENDPOINT_SECRET=from_production_enviroment_variable
+API_ENDPOINT_SECRET=your_generated_secret
+API_ENDPOINT_URL=https://your_api_endpoint_url
 ```
 
 > [!TIP]
