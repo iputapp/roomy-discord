@@ -7,7 +7,6 @@ compatibility_flags = ["nodejs_compat"]
 # 開発環境では .dev.vars の値が優先される
 [vars]
 NODE_ENV = "production"
-API_ENDPOINT_URL = "http://localhost:8787"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
