@@ -4,13 +4,15 @@ pre-commit:
     lint:
       priority: 1
       glob: "*.{js,ts}"
-      run: "pnpm biome lint --error-on-warnings '{staged_files}'"
+      run: |
+        pnpm biome lint --error-on-warnings {staged_files} --write
       stage_fixed: true
 
     format:
       priority: 2
       glob: "*.{js,ts}"
-      run: "pnpm biome format --error-on-warnings '{staged_files}' --write"
+      run: |
+        pnpm biome format --error-on-warnings {staged_files} --write
       stage_fixed: true
 
 post-merge:
