@@ -1,19 +1,14 @@
 name: Quality
 on:
+  push:
+    branches:
+      - main
+      - develop
+
   pull_request:
     branches:
       - main
       - develop
-    paths-ignore:
-      - "**/*.md"
-      - "docs/**"
-      - ".git*"
-      - ".vscode/**"
-      - ".env.example"
-      - ".npmrc"
-      - ".prototools"
-      - "LICENSE"
-      - "wrangler.toml"
 
 jobs:
   biome:
@@ -23,10 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Enable corepack
+      - name: Enable Corepack
         run: corepack enable
 
-      - name: Setup Node
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
