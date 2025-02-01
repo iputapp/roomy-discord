@@ -47,7 +47,33 @@ export namespace GoogleSheetsService {
       );
 
       if (!response.ok) {
-        throw new Error(`Google Sheets API error: ${response.status}`);
+        /**
+         * @example
+         * ```
+         * {
+         *   "error": {
+         *     "code": 400,
+         *     "message": 'Unable to parse range: 2月分!A:E',
+         *     "status": "INVALID_ARGUMENT"
+         *   }
+         * }
+         * ```
+         */
+        const errorData: {
+          error: {
+            code: number;
+            message: string;
+            status: string;
+          };
+        } = await response.json();
+        // シートや範囲が存在しない場合
+        if (
+          errorData.error.code === 400 ||
+          errorData.error.status === "INVALID_ARGUMENT"
+        ) {
+          return "今月の情報が見つかりませんでした";
+        }
+        throw new Error(`Google Sheets API error: ${response.statusText}`);
       }
 
       const data: {
