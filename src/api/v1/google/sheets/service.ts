@@ -71,7 +71,7 @@ export namespace GoogleSheetsService {
           errorData.error.code === 400 ||
           errorData.error.status === "INVALID_ARGUMENT"
         ) {
-          return "今月の情報が見つかりませんでした";
+          return "今月の情報が見つからないよ！";
         }
         throw new Error(`Google Sheets API error: ${response.statusText}`);
       }
@@ -89,7 +89,7 @@ export namespace GoogleSheetsService {
 
   function formatRoomResponse(values: string[][] | null | undefined): string {
     if (!values || values.length === 0) {
-      return "情報が見つかりませんでした";
+      return "今月は何もないよ！";
     }
 
     const today = new Date();
@@ -100,18 +100,18 @@ export namespace GoogleSheetsService {
     });
 
     if (!todayRow) {
-      return "本日の情報が見つかりませんでした";
+      return "今日の情報がないよ！";
     }
 
     const className = todayRow[0] || "情報なし"; // A列に授業名
     const date = todayRow[1] || "情報なし"; // B列に日付
     const dayOfWeek = todayRow[2] || "情報なし"; // C列に曜日
     const room = todayRow[3] || null; // D列に教室
-    const note = todayRow[4] || ""; // E列に備考
+    const note = todayRow[4] || null; // E列に備考
 
     /**
      * @example
-     * 本日の教室は999です
+     * 今日の教室は`999`だよ！
      * ```
      * <日付> 1/1(月)
      * <授業> 自習室
@@ -119,8 +119,8 @@ export namespace GoogleSheetsService {
      * ```
      */
     const message = !room
-      ? "本日の教室は予約されていません"
-      : `本日の教室は\`${room}\`です\n\`\`\`<日付> ${date}(${dayOfWeek})\n<授業> ${className}\n${note}\n\`\`\``;
+      ? "今日の教室は未定だよ！"
+      : `今日の教室は\`${room}\`だよ！\n\`\`\`<日付> ${date}(${dayOfWeek})\n<授業> ${className}${!note ? "" : `\n${note}`}\n\`\`\``;
 
     return message;
   }

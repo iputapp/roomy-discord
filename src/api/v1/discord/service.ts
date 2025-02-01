@@ -71,8 +71,8 @@ export namespace DiscordService {
 
         case "help": {
           const message = `### 使い方・コマンド一覧
-- \`/${DISCORD_COMMANDS[0].name} today\`  今日予約している教室を表示します
-- \`/${DISCORD_COMMANDS[0].name} help\`  このヘルプを表示します`;
+- \`/${DISCORD_COMMANDS[0].name} today\`  今日予約している教室を表示するよ！
+- \`/${DISCORD_COMMANDS[0].name} help\`  このヘルプだよ！`;
           return discordInteractionHandler({
             type: InteractionResponseType.ChannelMessageWithSource,
             data: { content: message },
@@ -82,7 +82,7 @@ export namespace DiscordService {
         default:
           return discordInteractionHandler({
             type: InteractionResponseType.ChannelMessageWithSource,
-            data: { content: "不明なコマンドです" },
+            data: { content: "不明なコマンドだよ！" },
           });
       }
     }
