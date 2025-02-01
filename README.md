@@ -216,6 +216,8 @@ POST /v1/cron
 >   return response;
 > };
 > ```
+>
+> `generateHMAC()`の内容は[`src/utils/crypto.ts`](./src/utils/crypto.ts)を参照する。
 
 ### 実行スケジュールを変更する
 
