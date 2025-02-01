@@ -24,8 +24,8 @@ NODE_ENV = "production"
 # [ai]
 # binding = "AI"
 
-# [observability]
-# enabled = true
+[observability]
+enabled = true
 # head_sampling_rate = 1
 
 [triggers]
