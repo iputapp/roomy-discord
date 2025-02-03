@@ -1,5 +1,17 @@
+import { CronService } from "~/api/v1/cron/service";
 import type { Bindings } from "~/types";
 import { generateHMAC } from "~/utils/crypto";
+
+export async function cron(env: Bindings) {
+  console.log("Processing cron job...");
+
+  try {
+    await CronService.processCronJob(env);
+    console.log(`Cron job processed at ${new Date().toISOString()}`);
+  } catch (error) {
+    console.error("Cron job processing failed:", error);
+  }
+}
 
 export async function callCronEndpoint(props: {
   path: string;

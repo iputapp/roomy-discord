@@ -3,7 +3,7 @@ import api from "~/api";
 import { APIError, apiErrorHandler } from "~/handler";
 import { authMiddleware } from "~/middleware";
 import type { Bindings } from "~/types";
-import { callCronEndpoint } from "./schedule";
+import { cron } from "./schedule";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
@@ -23,12 +23,7 @@ const scheduled: ExportedHandlerScheduledHandler<Bindings> = async (
   env,
   ctx,
 ) => {
-  ctx.waitUntil(
-    callCronEndpoint({
-      path: "/v1/cron",
-      env,
-    }),
-  );
+  ctx.waitUntil(cron(env));
 };
 
 export default {
