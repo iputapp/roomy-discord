@@ -9,7 +9,7 @@
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy:prod": "wrangler deploy --minify --env=production",
+    "deploy:mini": "wrangler deploy --minify",
     "start": "ngrok http 8787",
     "lint": "biome lint . --error-on-warnings",
     "format": "biome format . --error-on-warnings --write",
