@@ -1,5 +1,5 @@
 export interface Bindings {
-  NODE_ENV: "development" | "production" | "test";
+  NODE_ENV: "development" | "staging" | "production" | "test";
   DISCORD_TOKEN: string;
   DISCORD_APPLICATION_ID: string;
   DISCORD_PUBLIC_KEY: string;
