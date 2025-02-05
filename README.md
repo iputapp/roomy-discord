@@ -6,8 +6,8 @@
 
 ## Tech Stack
 
-| Environments                | Languages                  | Linters                                                                     | Frameworks   | Libraries                                                                      | Testing                             | CI/CD                 | PaaS                                                            |
-| :-------------------------- | :------------------------- | :-------------------------------------------------------------------------- | :----------- | :----------------------------------------------------------------------------- | :---------------------------------- | :-------------------- | :-------------------------------------------------------------- |
+| Environments                 | Languages  | Linters                           | Frameworks   | Libraries       | Testing        | CI/CD                 | PaaS                                            |
+| :--------------------------- | :--------- | :-------------------------------- | :----------- | :-------------- | :------------- | :-------------------- | :---------------------------------------------- |
 | ![node-logo]<br>![pnpm-logo] | ![ts-logo] | ![biome-logo]<br>![lefthook-logo] | ![hono-logo] | ![valibot-logo] | ![vitest-logo] | ![githubactions-logo] | ![cloudflareworkers-logo]<br>![cloudflare-logo] |
 
 [node-logo]: https://img.shields.io/badge/-Node.js-5FA04E.svg?logo=nodedotjs&style=flat&logoColor=ffffff
@@ -53,6 +53,8 @@ pnpm = ">=10"
 
 ```ini
 NODE_ENV=development
+API_ENDPOINT_URL=https://your_api_endpoint_url
+API_ENDPOINT_SECRET=your_generated_secret
 DISCORD_TOKEN=your_discord_token
 DISCORD_APPLICATION_ID=your_discord_application_id
 DISCORD_PUBLIC_KEY=your_discord_public_key
@@ -60,8 +62,6 @@ DISCORD_CHANNEL_ID=your_channel_id
 GOOGLE_CLIENT_EMAIL=your_google_client_email
 GOOGLE_PRIVATE_KEY=your_google_private_key
 SPREADSHEET_ID=your_spreadsheet_id
-API_ENDPOINT_SECRET=your_generated_secret
-API_ENDPOINT_URL=https://your_api_endpoint_url
 ```
 
 > [!TIP]
@@ -99,7 +99,7 @@ pnpm start
 >
 > [ngrok - Setup & Installation](https://dashboard.ngrok.com/get-started/setup)から環境に合わせて`ngrok`を導入する。
 >
-> Windowsは`Download for Windows (64-Bit)`でダウンロードおよび解凍したexeファイルを、レポジトリのルートディレクトリに置く。
+> Windows は`Download for Windows (64-Bit)`でダウンロードおよび解凍した exe ファイルを、レポジトリのルートディレクトリに置く。
 
 > [!TIP]
 >
@@ -135,7 +135,7 @@ pnpm register
 >
 > スラッシュコマンドの一覧は[`src/constants/config.ts`](./src/constants/config.ts)の`DISCORD_COMMANDS`を参照する。
 
-#### APIエンドポイント認証のキーを生成
+#### API エンドポイント認証のキーを生成
 
 ```sh
 pnpm gen:secret
@@ -147,10 +147,10 @@ pnpm gen:secret
 
 ## Documents
 
-- [APIエンドポイント](#apiエンドポイント)
+- [API エンドポイント](#apiエンドポイント)
 - [実行スケジュールを変更する](#実行スケジュールを変更する)
 
-### APIエンドポイント
+### API エンドポイント
 
 - [API v1](#api-v1)
 
@@ -182,40 +182,40 @@ Google Sheets から**今日の教室情報**を取得する。
 POST /v1/cron
 ```
 
-定期アナウンスのCronに設定する。
+定期アナウンスの Cron に設定する。
 
 #### 認証について
 
-センシティブなAPIエンドポイントは認証を設けている。
+センシティブな API エンドポイントは認証を設けている。
 
 認証付きのパスは以下:
 
 - [Google v1](#google-v1)
 - [Cron v1](#cron-v1)
 
+##### クライアントでのリクエスト例
+
+```ts
+async function makeAuthenticatedRequest(path: string) {
+  const timestamp = Date.now().toString();
+  const apiKey = "your_secure_random_string"; // API_ENDPOINT_SECRETと同じ値
+
+  // 署名の生成
+  const payload = timestamp + path;
+  const signature = await generateHMAC(payload, apiKey);
+
+  const response = await fetch(`https://your-api.com${path}`, {
+    headers: {
+      "X-Request-Timestamp": timestamp,
+      "X-Signature": signature,
+    },
+  });
+
+  return response;
+}
+```
+
 > [!NOTE]
->
-> クライアントでのリクエスト例:
->
-> ```ts
-> async function makeAuthenticatedRequest(path: string) {
->   const timestamp = Date.now().toString();
->   const apiKey = 'your_secure_random_string'; // API_ENDPOINT_SECRETと同じ値
->
->   // 署名の生成
->   const payload = timestamp + path;
->   const signature = await generateHMAC(payload, apiKey);
->
->   const response = await fetch(`https://your-api.com${path}`, {
->     headers: {
->       "X-Request-Timestamp": timestamp,
->       "X-Signature": signature
->     }
->   });
->
->   return response;
-> };
-> ```
 >
 > `generateHMAC()`の内容は[`src/utils/crypto.ts`](./src/utils/crypto.ts)を参照する。
 
@@ -225,4 +225,4 @@ POST /v1/cron
 
 > [!TIP]
 >
-> cronのタイムゾーンは`UTC`のため、`日本時間(JST)-9時間`を設定する。
+> cron のタイムゾーンは`UTC`のため、`日本時間(JST)-9時間`を設定する。
