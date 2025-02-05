@@ -122,7 +122,7 @@ pnpm format
 #### デプロイ
 
 ```sh
-pnpm deploy:prod
+pnpm deploy:mini
 ```
 
 #### コマンドを Discord に登録
