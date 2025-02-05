@@ -6,12 +6,6 @@ compatibility_flags = ["nodejs_compat"]
 
 # 開発環境では .dev.vars の値が優先される
 [vars]
-NODE_ENV = "development"
-
-[env.staging.vars]
-NODE_ENV = "staging"
-
-[env.production.vars]
 NODE_ENV = "production"
 
 # [[kv_namespaces]]
