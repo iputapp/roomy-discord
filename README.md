@@ -133,7 +133,7 @@ pnpm register
 
 > [!TIP]
 >
-> スラッシュコマンドの一覧は[`src/constants/config.ts`](./src/constants/config.ts)の`DISCORD_COMMANDS`を参照する。
+> スラッシュコマンドの一覧は[`src/constants/discord.ts`](./src/constants/discord.ts)の`DISCORD_COMMANDS`を参照する。
 
 #### API エンドポイント認証のキーを生成
 
