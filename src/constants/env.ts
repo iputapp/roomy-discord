@@ -1,8 +1,4 @@
-import {
-  ApplicationCommandOptionType,
-  ApplicationCommandType,
-} from "discord-api-types/v10";
-import type { Bindings, DiscordCommand } from "~/types";
+import type { Bindings } from "~/types";
 
 export const DISCORD_API_BASE_URL = "https://discord.com/api/v10";
 
@@ -28,23 +24,3 @@ export function parseEnv(env: Bindings) {
 }
 
 export type ParsedEnv = ReturnType<typeof parseEnv>;
-
-export const DISCORD_COMMANDS = [
-  {
-    name: "roomy",
-    description: "予約している教室を確認する",
-    type: ApplicationCommandType.ChatInput,
-    options: [
-      {
-        name: "today",
-        description: "今日の教室",
-        type: ApplicationCommandOptionType.Subcommand,
-      },
-      {
-        name: "help",
-        description: "使い方・コマンド一覧",
-        type: ApplicationCommandOptionType.Subcommand,
-      },
-    ],
-  },
-] as const satisfies DiscordCommand[];
