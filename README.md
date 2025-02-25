@@ -171,10 +171,20 @@ Discord App [`INTERACTIONS ENDPOINT URL`の設定](https://discord.com/developer
 ##### Google v1
 
 ```
-GET /v1/google/sheets/room/today
+GET /v1/google/sheets/room
 ```
 
-Google Sheets から**今日の教室情報**を取得する。
+Google Sheets から教室情報を取得する。
+
+| クエリパラメータ | 値                | 必須 |
+| :--------------: | :---------------- | :--: |
+|      period      | today または week |  ❌  |
+
+例: 今週の教室 `/v1/google/sheets/room?period=week`
+
+> [!TIP]
+>
+> `period`は省略できる。デフォルトは`period=today`になる。
 
 ##### Cron v1
 
