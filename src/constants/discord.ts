@@ -21,6 +21,11 @@ export const DISCORD_COMMANDS = [
         type: ApplicationCommandOptionType.Subcommand,
       },
       {
+        name: "week",
+        description: "今週の教室",
+        type: ApplicationCommandOptionType.Subcommand,
+      },
+      {
         name: "help",
         description: "使い方・コマンド一覧",
         type: ApplicationCommandOptionType.Subcommand,
