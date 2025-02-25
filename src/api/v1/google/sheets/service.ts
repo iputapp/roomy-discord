@@ -150,8 +150,6 @@ export namespace GoogleSheetsService {
     const endOfWeek = new Date(startOfWeek);
     endOfWeek.setDate(startOfWeek.getDate() + 6); // 今週の土曜日
 
-    console.log(values);
-
     // 今週の日付の範囲内にある行を全て取得
     const weekRows = values.filter((row) => {
       const date = row[1]; // B列に日付
