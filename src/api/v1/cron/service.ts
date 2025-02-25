@@ -8,7 +8,10 @@ export namespace CronService {
     const { googleSheets, discord } = parseEnv(env);
 
     // 定期実行の管理はcronの設定で行う
-    const message = await GoogleSheetsService.getRoomInfo(googleSheets);
+    const message = await GoogleSheetsService.getRoomInfo({
+      ...googleSheets,
+      query: { period: "week" },
+    });
     await sendDiscordMessage({
       token: discord.token,
       channelId: discord.channelId,
