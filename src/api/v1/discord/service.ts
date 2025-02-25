@@ -57,12 +57,26 @@ export namespace DiscordService {
        */
       const command = interaction.data.options?.[0].name
         .toString()
-        .toLowerCase();
+        .toLowerCase() as (typeof DISCORD_COMMANDS)[number]["options"][number]["name"];
 
       // コマンドの追加はここに追記
       switch (command) {
         case "today": {
-          const message = await GoogleSheetsService.getRoomInfo(env);
+          const message = await GoogleSheetsService.getRoomInfo({
+            ...env,
+            query: { period: "today" },
+          });
+          return discordInteractionHandler({
+            type: InteractionResponseType.ChannelMessageWithSource,
+            data: { content: message },
+          });
+        }
+
+        case "week": {
+          const message = await GoogleSheetsService.getRoomInfo({
+            ...env,
+            query: { period: "week" },
+          });
           return discordInteractionHandler({
             type: InteractionResponseType.ChannelMessageWithSource,
             data: { content: message },
