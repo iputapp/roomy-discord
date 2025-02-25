@@ -7,6 +7,7 @@ import type { DiscordCommand } from "~/types";
 /**
  * Discord のコマンド一覧
  * * `/roomy today` 今日の教室を確認する
+ * * `/roomy week` 今週の教室を確認する
  * * `/roomy help` 使い方・コマンド一覧を表示する
  */
 export const DISCORD_COMMANDS = [
@@ -18,6 +19,11 @@ export const DISCORD_COMMANDS = [
       {
         name: "today",
         description: "今日の教室",
+        type: ApplicationCommandOptionType.Subcommand,
+      },
+      {
+        name: "week",
+        description: "今週の教室",
         type: ApplicationCommandOptionType.Subcommand,
       },
       {
