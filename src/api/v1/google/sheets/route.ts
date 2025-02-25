@@ -4,6 +4,6 @@ import { GoogleSheetsController } from "./controller";
 
 const router = new Hono<{ Bindings: Bindings }>();
 
-router.get("/sheets/room/today", GoogleSheetsController.getRoom);
+router.get("/sheets/room", GoogleSheetsController.getRoom);
 
 export default router;
