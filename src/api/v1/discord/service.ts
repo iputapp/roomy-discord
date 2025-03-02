@@ -84,9 +84,16 @@ export namespace DiscordService {
         }
 
         case "help": {
-          const message = `### 使い方・コマンド一覧
-- \`/${DISCORD_COMMANDS[0].name} today\`  今日予約している教室を表示するよ！
-- \`/${DISCORD_COMMANDS[0].name} help\`  このヘルプだよ！`;
+          /**
+           * @example
+           * - `/roomy today`  今日の教室を確認する
+           * - `/roomy week`  今週の教室を確認する
+           * - `/roomy help`  使い方・コマンド一覧を確認する
+           */
+          const helps = DISCORD_COMMANDS[0].options.map((option) => {
+            return `- \`/${DISCORD_COMMANDS[0].name} ${option.name}\`  ${option.description}を確認する`;
+          });
+          const message = `### 使い方・コマンド一覧\n${helps.join("\n")}`;
           return discordInteractionHandler({
             type: InteractionResponseType.ChannelMessageWithSource,
             data: { content: message },
