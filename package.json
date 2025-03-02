@@ -3,7 +3,7 @@
   "version": "0.0.1-beta.17",
   "private": true,
   "engines": {
-    "node": ">=22",
+    "node": ">=20",
     "npm": "pnpmを使ってね🤗"
   },
   "packageManager": "pnpm@10.0.0",
