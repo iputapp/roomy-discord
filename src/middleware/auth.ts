@@ -4,14 +4,14 @@ import { APIError } from "~/handler";
 import type { Bindings } from "~/types";
 import { generateHMAC } from "~/utils/crypto";
 
-const DEFEAULT_TIMESTAMP_TOLERANCE = 5 * 60 * 1000; // 5分(ミリ秒)
+const DEFAULT_TIMESTAMP_TOLERANCE = 5 * 60 * 1000; // 5分(ミリ秒)
 
 export async function authMiddleware(
   c: Context<{ Bindings: Bindings }>,
   next: Next,
   options?: { timestampTolerance?: number },
 ) {
-  const { timestampTolerance = DEFEAULT_TIMESTAMP_TOLERANCE } = options || {};
+  const { timestampTolerance = DEFAULT_TIMESTAMP_TOLERANCE } = options || {};
 
   /**
    * 本番環境以外は認証をスキップ
