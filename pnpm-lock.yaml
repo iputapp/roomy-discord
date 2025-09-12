@@ -15,8 +15,8 @@ importers:
         specifier: ^144.0.0
         version: 144.0.0
       hono:
-        specifier: ^4.6.19
-        version: 4.6.19
+        specifier: ^4.9.7
+        version: 4.9.7
       valibot:
         specifier: 1.0.0-beta.14
         version: 1.0.0-beta.14(typescript@5.7.3)
@@ -617,8 +617,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hono@4.6.19:
-    resolution: {integrity: sha512-Xw5DwU2cewEsQ1DkDCdy6aBJkEBARl5loovoL1gL3/gw81RdaPbXrNJYp3LoQpzpJ7ECC/1OFi/vn3UZTLHFEw==}
+  hono@4.9.7:
+    resolution: {integrity: sha512-t4Te6ERzIaC48W3x4hJmBwgNlLhmiEdEE5ViYb02ffw4ignHNHa5IBtPjmbKstmtKa8X6C35iWwK4HaqvrzG9w==}
     engines: {node: '>=16.9.0'}
 
   https-proxy-agent@7.0.6:
@@ -1341,7 +1341,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono@4.6.19: {}
+  hono@4.9.7: {}
 
   https-proxy-agent@7.0.6:
     dependencies:
